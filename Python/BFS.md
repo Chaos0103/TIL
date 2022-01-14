@@ -9,7 +9,7 @@
 > 너비 우선 탐색 알고리즘인 BFS는 큐 자료구조를 기초한다는 점에서 구현이 간단
 - 일반적인 경우 실제 수행 시간은 DFS보다 좋은 편이라는 점까지만 추가로 기억
 
-```
+```python
 from collections import deque
 
 # BFS 메서드 정의
