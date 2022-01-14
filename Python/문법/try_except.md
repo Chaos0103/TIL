@@ -5,7 +5,7 @@
 ## except
 > 오류 발생 시, 실행할 코드
 
-```
+```python
 try:
   print("success")
 except:
