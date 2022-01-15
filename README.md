@@ -60,7 +60,7 @@
 <!--link-->
 <!--Java-->
 [클래스와 객체 1]: https://github.com/Chaos0103/TIL/blob/main/Java/%ED%81%B4%EB%9E%98%EC%8A%A4%EC%99%80%20%EA%B0%9D%EC%B2%B4%201.md
-[클래스와 객체 2]: #
+[클래스와 객체 2]: https://github.com/Chaos0103/TIL/blob/main/Java/%ED%81%B4%EB%9E%98%EC%8A%A4%EC%99%80%20%EA%B0%9D%EC%B2%B4%202.md
 [배열과 ArrayList]: #
 [상속과 다향성]: #
 [추상 클래스]: #
