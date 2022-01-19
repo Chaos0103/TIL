@@ -69,7 +69,7 @@
 # Python
 ## Algorithm
 1. [그리디 알고리즘]
-2. [구현] (미작성)
+2. [구현]
 3. [DFS] / [BFS]
 4. [정렬] (미작성)
 5. [이진 탐색]
@@ -101,7 +101,7 @@
 
 <!--Python-->
 [그리디 알고리즘]: https://github.com/Chaos0103/TIL/blob/main/Python/Algorithm/%EA%B7%B8%EB%A6%AC%EB%94%94%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98.md
-[구현]: #
+[구현]: https://github.com/Chaos0103/TIL/blob/main/Python/Algorithm/%EA%B5%AC%ED%98%84.md
 [DFS]: https://github.com/Chaos0103/TIL/blob/main/Python/Algorithm/DFS.md
 [BFS]: https://github.com/Chaos0103/TIL/blob/main/Python/Algorithm/BFS.md
 [정렬]: #
