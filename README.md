@@ -92,7 +92,7 @@
 [배열과 ArrayList]: https://github.com/Chaos0103/TIL/blob/main/Java/%EB%B0%B0%EC%97%B4%EA%B3%BC%20ArrayList.md
 [상속과 다향성]: https://github.com/Chaos0103/TIL/blob/main/Java/%EC%83%81%EC%86%8D%EA%B3%BC%20%EB%8B%A4%ED%98%95%EC%84%B1.md
 [추상 클래스]: https://github.com/Chaos0103/TIL/blob/main/Java/%EC%B6%94%EC%83%81%20%ED%81%B4%EB%9E%98%EC%8A%A4.md
-[인터페이스]: #
+[인터페이스]: https://github.com/Chaos0103/TIL/blob/ed32c5ab1801ae303bb4e269d9df8a47ddbc18a7/Java/%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4.md
 [기본 클래스]: #
 [컬렉션 프레임워크]: #
 [내부 클래스, 람다식, 스트림]: #
