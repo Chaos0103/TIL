@@ -3,11 +3,11 @@
 #### 기본 문법
 
 - [수 자료형](/Python/Grammar/Basic_grammar/Data_types.md)
-- [리스트 자료형]
-- [문자열/튜플 자료형]
-- [사전/집합 자료형]
-- [조건문]
-- [반목문]
-- [함수와 람다 표현식]
-- [기본 입출력]
-- [실전에 유용한 표준 라이브러리]
+- [리스트 자료형](/Python/Grammar/Basic_grammar/List_data_type.md)
+- [문자열/튜플 자료형](/Python/Grammar/Basic_grammar/String_and_tupel_data_type.md)
+- [사전/집합 자료형](/Python/Grammar/Basic_grammar/Dict_and_set_data_type.md)
+- [조건문](/Python/Grammar/Basic_grammar/Conditional_statements.md)
+- [반목문](/Python/Grammar/Basic_grammar/Repeated_statements.md)
+- [함수와 람다 표현식](/Python/Grammar/Basic_grammar/Function_and_lambda.md)
+- [기본 입출력](/Python/Grammar/Basic_grammar/Input_and_output.md)
+- [실전에 유용한 표준 라이브러리](/Python/Grammar/Basic_grammar/Standard_library.md)
