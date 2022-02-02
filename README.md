@@ -2,12 +2,12 @@
 
 #### 기본 문법
 
-- [수 자료형](https://github.com/Chaos0103/TIL/blob/f348e669e8c8e9a42b40303631157dbe9463359a/Python/%EB%AC%B8%EB%B2%95/%EA%B8%B0%EB%B3%B8%20%EB%AC%B8%EB%B2%95/%EC%9E%90%EB%A3%8C%ED%98%95.md)
-- [리스트 자료형](https://github.com/Chaos0103/TIL/blob/f348e669e8c8e9a42b40303631157dbe9463359a/Python/%EB%AC%B8%EB%B2%95/%EA%B8%B0%EB%B3%B8%20%EB%AC%B8%EB%B2%95/%EB%A6%AC%EC%8A%A4%ED%8A%B8%20%EC%9E%90%EB%A3%8C%ED%98%95.md)
-- [문자열/튜플 자료형](https://github.com/Chaos0103/TIL/blob/f348e669e8c8e9a42b40303631157dbe9463359a/Python/%EB%AC%B8%EB%B2%95/%EA%B8%B0%EB%B3%B8%20%EB%AC%B8%EB%B2%95/%EB%AC%B8%EC%9E%90%EC%97%B4,%20%ED%8A%9C%ED%94%8C%20%EC%9E%90%EB%A3%8C%ED%98%95.md)
-- [사전/집합 자료형](https://github.com/Chaos0103/TIL/blob/f348e669e8c8e9a42b40303631157dbe9463359a/Python/%EB%AC%B8%EB%B2%95/%EA%B8%B0%EB%B3%B8%20%EB%AC%B8%EB%B2%95/%EC%82%AC%EC%A0%84,%20%EC%A7%91%ED%95%A9%20%EC%9E%90%EB%A3%8C%ED%98%95.md)
-- [조건문](https://github.com/Chaos0103/TIL/blob/f348e669e8c8e9a42b40303631157dbe9463359a/Python/%EB%AC%B8%EB%B2%95/%EA%B8%B0%EB%B3%B8%20%EB%AC%B8%EB%B2%95/%EC%A1%B0%EA%B1%B4%EB%AC%B8.md)
-- [반목문](https://github.com/Chaos0103/TIL/blob/f348e669e8c8e9a42b40303631157dbe9463359a/Python/%EB%AC%B8%EB%B2%95/%EA%B8%B0%EB%B3%B8%20%EB%AC%B8%EB%B2%95/%EB%B0%98%EB%B3%B5%EB%AC%B8.md)
-- [함수와 람다 표현식](https://github.com/Chaos0103/TIL/blob/f348e669e8c8e9a42b40303631157dbe9463359a/Python/%EB%AC%B8%EB%B2%95/%EA%B8%B0%EB%B3%B8%20%EB%AC%B8%EB%B2%95/%ED%95%A8%EC%88%98%EC%99%80%20%EB%9E%8C%EB%8B%A4%20%ED%91%9C%ED%98%84%EC%8B%9D.md)
-- [기본 입출력](https://github.com/Chaos0103/TIL/blob/f348e669e8c8e9a42b40303631157dbe9463359a/Python/%EB%AC%B8%EB%B2%95/%EA%B8%B0%EB%B3%B8%20%EB%AC%B8%EB%B2%95/%EA%B8%B0%EB%B3%B8%20%EC%9E%85%EC%B6%9C%EB%A0%A5.md)
-- [실전에 유용한 표준 라이브러리](https://github.com/Chaos0103/TIL/blob/f348e669e8c8e9a42b40303631157dbe9463359a/Python/%EB%AC%B8%EB%B2%95/%EA%B8%B0%EB%B3%B8%20%EB%AC%B8%EB%B2%95/%EC%8B%A4%EC%A0%84%EC%97%90%EC%84%9C%20%EC%9C%A0%EC%9A%A9%ED%95%9C%20%ED%91%9C%EC%A4%80%20%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC.md)
+- [수 자료형](/Python/Grammar/Basic_grammar/Data_types.md)
+- [리스트 자료형]
+- [문자열/튜플 자료형]
+- [사전/집합 자료형]
+- [조건문]
+- [반목문]
+- [함수와 람다 표현식]
+- [기본 입출력]
+- [실전에 유용한 표준 라이브러리]
