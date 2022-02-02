@@ -4,7 +4,7 @@
 
 - [수 자료형](/Python/Grammar/Basic_grammar/Data_types.md)
 - [리스트 자료형](/Python/Grammar/Basic_grammar/List_data_type.md)
-- [문자열/튜플 자료형](/Python/Grammar/Basic_grammar/String_and_tupel_data_type.md)
+- [문자열/튜플 자료형](/Python/Grammar/Basic_grammar/String_and_tuple_data_type.md)
 - [사전/집합 자료형](/Python/Grammar/Basic_grammar/Dict_and_set_data_type.md)
 - [조건문](/Python/Grammar/Basic_grammar/Conditional_statements.md)
 - [반목문](/Python/Grammar/Basic_grammar/Repeated_statements.md)
