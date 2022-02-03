@@ -2,6 +2,7 @@
 
 #### 기본 문법
 
+- [스타일 가이드](/Python/Grammar/Basic_grammar/Python_style_guide.md)
 - [수 자료형](/Python/Grammar/Basic_grammar/Data_types.md)
 - [리스트 자료형](/Python/Grammar/Basic_grammar/List_data_type.md)
 - [문자열/튜플 자료형](/Python/Grammar/Basic_grammar/String_and_tuple_data_type.md)
