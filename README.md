@@ -15,4 +15,4 @@
 
 ### 알고리즘(Algorithm)
 
-- [그리디(Greedy)](Python/Algorithm/Greedy.md)
+- [그리디(Greedy)](/Python/Algorithm/Greedy.md)
