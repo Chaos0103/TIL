@@ -1,6 +1,6 @@
-### Python
+## Python
 
-#### 기본 문법
+### 기본 문법
 
 - [스타일 가이드](/Python/Grammar/Basic_grammar/Python_style_guide.md)
 - [수 자료형](/Python/Grammar/Basic_grammar/Data_types.md)
@@ -12,3 +12,7 @@
 - [함수와 람다 표현식](/Python/Grammar/Basic_grammar/Function_and_lambda.md)
 - [기본 입출력](/Python/Grammar/Basic_grammar/Input_and_output.md)
 - [실전에 유용한 표준 라이브러리](/Python/Grammar/Basic_grammar/Standard_library.md)
+
+### 알고리즘(Algorithm)
+
+- [그리디(Greedy)](Python/Algorithm/Greedy.md)
