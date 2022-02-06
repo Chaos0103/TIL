@@ -13,6 +13,14 @@
 - [기본 입출력](/Python/Grammar/Basic_grammar/Input_and_output.md)
 - [실전에 유용한 표준 라이브러리](/Python/Grammar/Basic_grammar/Standard_library.md)
 
+### 자료구조(Data Structure)
+
+- [스택(Stack)/큐(Queue)](/Python/Data_structure/Stack_and_Queue.md)
+- [재귀 함수(Recursive Function)](/Python/Data_structure/Recursive_function.md)
+- [우선순위 큐(Priority Queue)/힙(Heap)](/Python/Data_structure/Priority_queue_and_Heap.md)
+
 ### 알고리즘(Algorithm)
 
 - [그리디(Greedy)](/Python/Algorithm/Greedy.md)
+- [구현(Implementation)](/Python/Algorithm/Implementation.md)
+- [DFS/BFS](/Python/Algorithm/DFS_BFS.md)
