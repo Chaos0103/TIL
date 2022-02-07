@@ -24,3 +24,4 @@
 - [그리디(Greedy)](/Python/Algorithm/Greedy.md)
 - [구현(Implementation)](/Python/Algorithm/Implementation.md)
 - [DFS/BFS](/Python/Algorithm/DFS_BFS.md)
+- [정렬(Sorting)](/Python/Algorithm/Sorting.md)
