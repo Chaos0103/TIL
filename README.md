@@ -18,6 +18,7 @@
 - [스택(Stack)/큐(Queue)](/Python/Data_structure/Stack_and_Queue.md)
 - [재귀 함수(Recursive Function)](/Python/Data_structure/Recursive_function.md)
 - [우선순위 큐(Priority Queue)/힙(Heap)](/Python/Data_structure/Priority_queue_and_Heap.md)
+- [트리(Tree)](/Python/Data_structure/Tree.md)
 
 ### 알고리즘(Algorithm)
 
@@ -25,3 +26,4 @@
 - [구현(Implementation)](/Python/Algorithm/Implementation.md)
 - [DFS/BFS](/Python/Algorithm/DFS_BFS.md)
 - [정렬(Sorting)](/Python/Algorithm/Sorting.md)
+- [이진 탐색(Binary Search)](/Python/Algorithm/Binary_search.md)
