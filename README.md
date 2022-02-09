@@ -27,3 +27,4 @@
 - [DFS/BFS](/Python/Algorithm/DFS_BFS.md)
 - [정렬(Sorting)](/Python/Algorithm/Sorting.md)
 - [이진 탐색(Binary Search)](/Python/Algorithm/Binary_search.md)
+- [다이나믹 프로그래밍(Dynamic Programming)](/Python/Algorithm/Dynamic_programming.md)
