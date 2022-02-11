@@ -1,6 +1,6 @@
 ## Python
 
-- [코딩 테스트 개요](#)
+- [코딩 테스트 개요]([#](https://github.com/Chaos0103/TIL/blob/9ed2156c034f6d6e76f740594c89e5fef7f272bb/Python/%EC%BD%94%EB%94%A9%20%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B0%9C%EC%9A%94.md))
 
 ### 기본 문법
 
