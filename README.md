@@ -1,6 +1,7 @@
 ## Python
 
-- [코딩 테스트 개요]([#](https://github.com/Chaos0103/TIL/blob/9ed2156c034f6d6e76f740594c89e5fef7f272bb/Python/%EC%BD%94%EB%94%A9%20%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B0%9C%EC%9A%94.md))
+- [코딩 테스트 개요](https://github.com/Chaos0103/TIL/blob/9ed2156c034f6d6e76f740594c89e5fef7f272bb/Python/%EC%BD%94%EB%94%A9%20%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B0%9C%EC%9A%94.md)
+- [개발형 코딩 테스트](https://github.com/Chaos0103/TIL/blob/513361dc14eb0e28c56b7aef0ba0a26d84085f47/Python/%EA%B0%9C%EB%B0%9C%ED%98%95%20%EC%BD%94%EB%94%A9%20%ED%85%8C%EC%8A%A4%ED%8A%B8.md)
 
 ### 기본 문법
 
@@ -31,3 +32,7 @@
 - [이진 탐색(Binary Search)](/Python/Algorithm/Binary_search.md)
 - [다이나믹 프로그래밍(Dynamic Programming)](/Python/Algorithm/Dynamic_programming.md)
 - [최단 경로(Shortest Path)](/Python/Algorithm/Shortest_path.md)
+  - [벨만 포드 최단 경로(Bellman-Ford Shortest Path)](/Python/Algorithm/Bellman-Ford_shortest_path.md)
+- [기타 그래프 이론(Graph Theory)](/Python/Algorithm/Graph_theory.md)
+  - [최소 공통 조상(Lowest Common Ancestor: LCA)](/Python/Algorithm/Lowest_common_ancestor.md)
+- [기타 알고리즘](/Python/Algorithm/etc.md)
