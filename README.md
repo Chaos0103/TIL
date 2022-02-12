@@ -35,4 +35,4 @@
   - [벨만 포드 최단 경로(Bellman-Ford Shortest Path)](/Python/Algorithm/Bellman-Ford_shortest_path.md)
 - [기타 그래프 이론(Graph Theory)](/Python/Algorithm/Graph_theory.md)
   - [최소 공통 조상(Lowest Common Ancestor: LCA)](/Python/Algorithm/Lowest_common_ancestor.md)
-- [기타 알고리즘](/Python/Algorithm/etc.md)
+- [기타 알고리즘](/Python/Algorithm/Etc.md)
