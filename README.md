@@ -37,11 +37,7 @@
   - [최소 공통 조상(Lowest Common Ancestor: LCA)](/Python/Algorithm/Lowest_common_ancestor.md)
 - [기타 알고리즘](/Python/Algorithm/Etc.md)
 
-<br>
-
 ------
-
-<br>
 
 ## Spring
 
