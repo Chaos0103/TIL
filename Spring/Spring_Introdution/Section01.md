@@ -115,7 +115,7 @@ public class HelloController {
 
 - 실행: http://localhost:8080/hello
 
-![동작 환경 그림](../img/1.png))
+![동작 환경 그림](../img/spring_introdution/s1/1.png)
 
 - 컨트롤러에서 리턴 값으로 문자를 반환하면 `viewResolver`가 화면을 찾아서 처리
   - 스프링 부트 템플릿 엔진 기본 viewName 매핑
