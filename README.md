@@ -58,7 +58,7 @@
 - [섹션 3. 스프링 핵심 원리 이해2 - 객체 지향 원리 적용](/Spring/Spring_Core_Basic/Section03.md)
 - [섹션 4. 스프링 컨테이너와 스프링 빈](/Spring/Spring_Core_Basic/Section04.md)
 - [섹션 5. 싱글톤 컨테이너](/Spring/Spring_Core_Basic/Section05.md)
-- [섹션 6. 컴포넌트 스캔]
+- [섹션 6. 컴포넌트 스캔](/Spring/Spring_Core_Basic/Section06.md)
 - [섹션 7. 의존관계 자동 주입]
 - [섹션 8. 빈 생명주기 콜백]
 - [섹션 9. 빈 스코프]
