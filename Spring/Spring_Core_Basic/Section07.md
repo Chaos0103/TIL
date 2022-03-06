@@ -130,10 +130,287 @@ public class OrderServiceImpl implements OrderService {
 > 참고: 어쩌면 당연한 이야기이지만 의존관계 자동 주입은 스프링 컨테이너가 관리하는 스프링 빈이어야 동작. 스프링 빈이 아닌 `Member`같은 클래스에서 `@Autowired`코드를 적용해도 아무 기능도 동작하지 않음
 
 ### 옵션 처리
+
+- 주입할 스프링 빈이 없어도 동작해야 할 때가 있음
+- 그런데 `@Autowired`만 사용하면 `required` 옵션의 기본값이 `true`로 되어 있어서 자동 주입 대상이 없으면 오류가 발생
+
+#### 자동 주입 대상을 옵션으로 처리하는 방법
+
+`@Autowired(required=false)`: 자동 주입할 대상이 없으면 수정자 메서드 자체가 호출 안됨
+`org.springframework.lang.@Nullable`: 자동 주입할 대상이 없으면 null이 입력
+`Optional<>`: 자동 주입할 대상이 없으면 `Optional.empty`가 입력
+
+```java
+package hello.core.autowired;
+
+import hello.core.member.Member;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.lang.Nullable;
+
+import java.util.Optional;
+
+class AutowiredTest {
+
+    @Test
+    void AutowiredOption() {
+        ApplicationContext ac = new AnnotationConfigApplicationContext(TestBean.class);
+    }
+
+    static class TestBean {
+
+        @Autowired(required = false)
+        public void setNoBean1(Member noBean1) {
+            System.out.println("noBean1 = " + noBean1);
+        }
+
+        @Autowired
+        public void setNoBean2(@Nullable Member noBean2) {
+            System.out.println("noBean2 = " + noBean2);
+        }
+
+        @Autowired
+        public void setNoBean3(Optional<Member> noBean3) {
+            System.out.println("noBean3 = " + noBean3);
+        }
+    }
+
+}
+```
+- **Member는 스프링 빈이 아님**
+- `setNoBean1()`은 `@Autowired(required=false)`이므로 호출 자체가 안됨
+
+#### 출력 결과
+
+```
+setNoBean2 = null
+setNoBean3 = Optional.empty
+```
+> 참고: @Nullable, Optional은 스프링 전반에 걸쳐서 지원. 예를 들어서 생성자 자동 주입에서 특정 필드에만 사용해도 됨
+
 ### 생성자 주입을 선택해라!
+
+- 과거에는 수정자 주입과 필드 주입을 많이 사용했지만, 최근에는 스프링을 포함한 DI 프레임워크 대부분이 생성자 주입을 권장
+
+#### 불변
+
+- 대부분의 의존관계 주입은 한번 일어나면 애플리케이션 종료시점까지 의존관계를 변경할 일이 없음. 오히려 대부분의 의존관계는 애플리케이션 종료 전까지 변하면 안됨(불변해야 함)
+- 수정자 주입을 사용하면, setXxx 메서드를 public으로 열어두어야 함
+- 누군가 실수로 변경할 수 도 있고, 변경하면 안되는 메서드를 열어두는 것이 좋은 설계 방법이 아님
+- 생성자 주입은 객체를 생성할 때 딱 1번만 호출되므로 이후에 호출되는 일이 없음. 따라서 불변하게 설계할 수 있음
+
+#### 누락
+
+- 프레임워크 없이 순수한 자바 코드를 테스트 하는 경우
+
+##### 수정자 의존관계인 경우
+
+```java
+public class OrderServiceImpl implements OrderService {
+    private MemberRepository memberRepository;
+    private DiscountPolicy discountPolicy;
+      
+    @Autowired
+    public void setMemberRepository(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
+      
+    @Autowired
+    public void setDiscountPolicy(DiscountPolicy discountPolicy) {
+        this.discountPolicy = discountPolicy;
+    }
+}
+```
+- `@Autowired`가 프레임워크 안에서 동작할 때는 의존관계가 없으면 오류가 발생하지만, 지금은 프레임워크 없이 순수한 자바 코드로만 단위 테스트를 수행하고 있음
+
+##### 테스트
+
+```java
+@Test
+void createOrder() {
+    OrderServiceImpl orderService = new OrderServiceImpl();
+    orderService.createOrder(1L, "itemA", 10000);
+}
+```
+- 그런데 막상 실행 결과는 NPE(Null Point Exception)이 발생하는데, memberRepository, discountPolicy 모두 의존관계 주입이 누락되었기 때문
+- 생성자 주입을 사용하면 다음처럼 주입 데이터를 누락 했을 때 **컴파일 오류**가 발생
+- 그리고 IDE에서 바로 어떤 값을 필수로 주입해야 하는지 알 수 있음
+
+#### final 키워드
+
+- 생성자 주입을 사용하면 필드에 `final` 키워드를 사용할 수 있음
+- 그래서 생성자에서 혹시라도 값이 설정되지 않은 오류를 컴파일 시점에 막아줌
+```java
+@Component
+public class OrderServiceImpl implements OrderService {
+        
+    private final MemberRepository memberRepository;
+    private final DiscountPolicy discountPolicy;
+
+    @Autowired
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+    }
+}
+```
+- 잘 보면 필수 필드인 `discountPolicy`에 값을 설정해야 하는데, 이 부분이 누락. 자바는 컴파일 시점에 다음 오류를 발생시킴
+- `java: variable discountPolicy might not have been initialized`
+- 기억하자! **컴파일 오류는 세상에서 가장 빠르고, 좋은 오류!**
+> 참고: 수정자 주입을 포함한 나머지 주입 방식은 모두 생성자 이후에 호출되므로, 필드에 `final` 키워드를 사용할 수 없음. 오직 생성자 주입 방식만 `final` 키워드를 사용할 수 있음
+
+#### 정리
+
+- 생성자 주입 방식을 선택하는 이유는 여러가지가 있지만, 프레임워크에 의존하지 않고, 순수한 자바 언어의 특징을 잘 살리는 방법
+- 기본으로 생성자 주입을 사용하고, 필수 값이 아닌 경우에는 수정자 주입 방식을 옵션으로 부여하면 됨. 생성자 주입과 수정자 주입을 동시에 사용할 수 있음
+- 항상 생성자 주입을 선택! 그리고 가끔 옵션이 필요하면 수정자 주입을 선택. 필드 주입은 사용하지 않는게 좋음
+
 ### 롬복과 최신 트랜드
+
+- 막상 개발을 해보면, 대부분이 다 불변이고, 그래서 다음과 같이 생성자에 final 키워드를 사용
+
+#### 기본코드
+
+```java
+@Component
+public class OrderServiceImpl implements OrderService {
+    private final MemberRepository memberRepository;
+    private final DiscountPolicy discountPolicy;
+    
+    @Autowired
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
+}
+```
+- 생성자가 딱 1개만 있으면 `@Autowired`를 생략할 수 있음
+```java
+@Component
+public class OrderServiceImpl implements OrderService {
+    private final MemberRepository memberRepository;
+    private final DiscountPolicy discountPolicy;
+    
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
+}
+```
+- 롬복 라이브러리가 제공하는 `@RequiredArgsConstructor` 기능을 사용하면 final이 붙은 필드를 모아서 생성자를 자동으로 만들어줌(다음 코드에서 보이지는 않지만 실제 호출이 가능)
+
+#### 최종 결과 코드
+
+```java
+@Component
+@RequiredArgsConstructor  // final 붙은 것들 생성자 만듬
+public class OrderServiceImpl implements OrderService{
+
+    private final MemberRepository memberRepository;
+    private final DiscountPolicy discountPolicy;
+}
+```
+- 이 최종결과 코드와 이전의 코드는 완전히 동일
+- 롬복이 자바의 애노테이션 프로세서라는 기능을 이용해서 컴파일 시점에 생성자 코드를 자동으로 생성
+- 실제 `class`를 열어보면 다음 코드가 추가되어 있는 것을 확인할 수 있음
+```java
+public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+    this.memberRepository = memberRepository;
+    this.discountPolicy = discountPolicy;
+}
+```
+
+#### 정리
+
+- 최근에는 생성자를 딱 1개 두고, `@Autowired`를 생략하는 방법을 주로 사용
+- 여기에 Lombok 라이브러리의 `@RequiredArgsConstructor` 함께 사용하면 기능은 다 제공하면서, 코드는 깔끔하게 사용할 수 있음
+
+#### 롬복 라이브러리 적용 방법
+
+`build.gradle`에 라이브러리 및 환경 추가
+```java
+plugins {
+	id 'org.springframework.boot' version '2.5.10'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'hello'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+// lombok 설정 추가 시작
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+// lombok 설정 추가 끝
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+
+	// lombok 라이브러리 추가 시작
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	testCompileOnly 'org.projectlombok:lombok'
+	testAnnotationProcessor 'org.projectlombok:lombok'
+	// lombok 라이브러리 추가 끝
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+```
+1. Preferences -> plugin -> lombok 검색 설치 실행(재시작)
+2. Preferences -> Annotation Processors 검색 -> Enable annotation processing 체크(재시작)
+3. 임의의 테스트 클래스를 만들고 @Getter, @Setter 확인
+
 ### 조회 빈이 2개 이상 - 문제
+
+- `@Autowired`는 타입(Type)으로 조회
+```java
+@Autowired
+private DiscountPolicy discountPolicy;
+```
+- 타입으로 조회하기 때문에, 마치 다음 코드와 유사하게 동작(실제로는 더 많으 기능을 제공)
+  - `ac.getBean(DiscountPolicy.class)`
+- 스프링 빈 조회에서 학습했듯이 타입으로 조회하면 선택된 빈이 2개 이상일 때 문제가 발생
+- `DiscountPolicy`의 하위 타입인 `FixDiscountPolicy`, `RateDiscountPolicy` 둘 다 스프링 빈으로 선언
+```java
+@Component
+public class FixDiscountPolicy implements DiscountPolicy {}
+```
+```java
+@Component
+public class RateDiscountPolicy implements DiscountPolicy {}
+```
+- 그리고 아래와 같이 의존관계 자동 주입을 실행하면
+```java
+@Autowired
+private DiscountPolicy discountPolicy;
+```
+- `NoUniqueBeanDefinitionException` 오류가 발생
+```
+NoUniqueBeanDefinitionException: No qualifying bean of type 'hello.core.discount.DiscountPolicy' available: expected single matching bean but found 2: fixDiscountPolicy,rateDiscountPolicy
+```
+- 오류메시지가 친절하게도 하나의 빈을 기대했는데 `fixDiscountPolicy`, `rateDiscountPolicy` 2개가 발견되었다고 알려줌
+- 이때 하위 타입으로 지정할 수도 있지만, 하위 타입으로 지정하는 것은 DIP를 위배하고 유연성이 떨어짐
+- 그리고 이름만 다르고, 완전히 똑같은 타입의 스프링 빈이 2개 있을 때 해결이 안됨
+- 스프링 빈을 수동 등록해서 문제를 해결해도 되지만, 의존 관계 자동 주입에서 해결하는 여러 방법이 있음
+
 ### @Autowired 필드 명, @Qualifier, @Primary
+
+
+
 ### 애노테니션 직접 만들기
 ### 조회한 빈이 모두 필요할 때, List, Map
 ### 자동, 수동의 올바른 실무 운영 기준
