@@ -409,7 +409,129 @@ NoUniqueBeanDefinitionException: No qualifying bean of type 'hello.core.discount
 
 ### @Autowired 필드 명, @Qualifier, @Primary
 
+- 조회 대상 빈이 2개 이상일 때 해결 방법
+  - @Autowired 필드 명 매칭
+  - @Qualifier -> @Qualifier끼리 매칭 -> 빈 이름 매칭
+  - @Primary 사용
 
+#### @Autowired 필드 명 매칭
+
+- `@Autowired`는 타입 매칭을 시도하고, 이때 여러 빈이 있으면 필드 이름, 파라미터 이름으로 빈 이름을 추가 매칭
+
+##### 기존 코드
+
+```java
+@Autowired
+private DiscountPolicy discountPolicy
+```
+
+##### 필드 명을 빈 이름으로 변경
+
+```java
+@Autowired
+private DiscountPolicy rateDiscountPolicy
+```
+
+- 필드 명이 `rateDiscountPolicy`이므로 정상 주입
+- **필드 명 매칭은 먼저 타입 매칭을 시도하고 그 결과에 여러 빈이 있을 때 추가로 동작하는 기능**
+
+#### @Autowired 매칭 정리
+
+1. 타입 매칭
+2. 타입 매칭의 결과가 2개 이상일 때 필드 명, 파라미터 명으로 빈 이름 매칭
+
+#### @Qualifier 사용
+
+- `@Qualifier`는 추가 구분자를 붙여주는 방법
+- 주입시 추가적인 방법을 제공하는 것이지 빈 이름을 변경하는 것은 아님
+- **빈 등록시 @Qualifier를 붙여줌**
+```java
+@Component
+@Qualifier("mainDiscountPolicy")
+public class RateDiscountPolicy implements DiscountPolicy {}
+```
+```java
+@Component
+@Qualifier("fixDiscountPolicy")
+public class FixDiscountPolicy implements DiscountPolicy {}
+```
+- **주입시에 @Qualifier를 붙여주고 등록한 이름을 적어줌**
+
+#### 생성자 자동 주입 예시
+
+```java
+@Autowired
+public OrderServiceImpl(MemberRepository memberRepository, @Qualifier("mainDiscountPolicy") DiscountPolicy discountPolicy) {
+    this.memberRepository = memberRepository;
+    this.discountPolicy = discountPolicy;
+}
+```
+
+#### 수정자 자동 주입 예시
+
+```java
+@Autowired
+public DiscountPolicy setDiscountPolicy(@Qualifier("mainDiscountPolicy") DiscountPolicy discountPolicy) {
+    return discountPolicy;
+}
+```
+- `@Qualifier`로 주입할 때 `@Qualifier("mainDiscountPolicy")`를 못찾는다면 어떻게 될까?
+- 그러면 mainDiscountPolicy라는 이름의 스프링 빈을 추가로 찾음
+- 하지만 `@Qualifier`는 `@Qualifier`를 찾는 용도로만 사용하는게 명확하고 좋음
+
+#### @Qualifier 정리
+
+1. @Qualifier끼리 매칭
+2. 빈 이름 매칭
+3. `NoSuchBeanDefinitionException` 예외 발생
+
+#### @Primary 사용
+
+- `@Primary`는 우선순위를 정하는 방법
+- @Autowired 시에 여러 빈이 매칭되면 `@Primary`가 우선권을 가짐
+
+#### rateDiscountPolicy 우선권
+
+```java
+@Component
+@Primary
+public class RateDiscountPolicy implements DiscountPolicy {}
+
+@Component
+public class FixDiscountPolicy implements DiscountPolicy {}
+```
+
+#### 사용 코드
+
+```java
+//생성자
+@Autowired
+public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+    this.memberRepository = memberRepository;
+    this.discountPolicy = discountPolicy;
+}
+
+//수정자
+@Autowired
+public DiscountPolicy setDiscountPolicy(DiscountPolicy discountPolicy) {
+    return discountPolicy;
+}
+```
+- 코드를 실행해보면 문제 없이 `@Primary`가 잘 동작하는 것을 확인
+- 여기까지 보면 `@Primary`와 `@Qualifier` 중에 어떤 것을 사용하면 좋을지 고민
+- `@Qualifier`의 단점은 주입 받을 때 다음과 같이 모든 코드에 `@Qualifier`를 붙여주어야 한다는 점
+```java
+@Autowired
+public OrderServiceImpl(MemberRepository memberRepository, @Qualifier("mainDiscountPolicy") DiscountPolicy discountPolicy) {
+    this.memberRepository = memberRepository;
+    this.discountPolicy = discountPolicy;
+}
+```
+- 반면에 `@Primary`를 사용하면 `@Qualifier`를 붙일 필요가 없음
+
+#### 우선순위
+
+- `@Primary`보다 `@Qualifier`의 우선권이 높음
 
 ### 애노테니션 직접 만들기
 ### 조회한 빈이 모두 필요할 때, List, Map
