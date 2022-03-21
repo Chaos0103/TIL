@@ -68,3 +68,4 @@
 ### HTTP 웹 기본 지식
 
 - [섹션 1. 인터넷 네트워크](/Spring/HTTP/Section01.md)
+- [섹션 2. URI와 웹 브라우저 요청 흐름](/Spring/HTTP/Section02.md)
