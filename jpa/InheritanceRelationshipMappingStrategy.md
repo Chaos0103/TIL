@@ -107,6 +107,44 @@
 
 * 부모 클래스 값만 독단적으로 생성하는 경우가 존재하지 않는다. 따라서 부모 클래스는 `abstract` 키워드를 사용하여 추상 클래스로 선언한다.
 
+## @MappedSuperclass
+
+> 공통 매핑 정보가 필요할 때 사용
+
+* 상속관계 매핑이 아닌, 테이블에서 공통으로 사용하는 컬럼이 필요할 때 사용한다.
+* 부모 클래스를 상속 받는 **자식 클래스에 매핑 정보만 제공**한다.
+* 조회가 불가능하다.
+* 직접 생성해서 사용할 일이 없으므로 추상 클래스로 선언하는 것을 권장한다.
+* 주로 등록일, 수정일, 등록자, 수정자 같은 전체 엔티티에서 공통으로 적용하는 정보를 모을 때 사용한다.
+* 참고: `@Entity` 클래스는 엔티티나 `@MappedSuperclass`로 지정한 클래스만 상속이 가능하다.
+
+```java
+@Getter
+@MappedSuperclass
+@EntityListeners(AuditingEntityListener.class)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public abstract class BaseEntity {
+
+    @CreatedDate
+    private LocalDateTime createdDateTime;
+
+    @LastModifiedDate
+    private LocalDateTime lastModifiedDateTime;
+    
+    @CreatedBy
+    private Long createBy;
+
+    @LastModifiedBy
+    private Long lastModifiedBy;
+}
+
+@Getter
+@Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class Member extends BaseEntity {
+}
+```
+
 ## Practice
 
 ### 공통 코드
