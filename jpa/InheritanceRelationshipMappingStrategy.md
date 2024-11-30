@@ -25,7 +25,7 @@
 
 ## 상속관계 매핑
 
-![IRMS01](image/IRMS01.png)
+![IRMS01](files/image/irms/IRMS01.png)
 
 > 객체의 상속 구조와 관계형 데이터베이스의 슈퍼-서브타입 관계를 매핑
 
@@ -40,7 +40,7 @@
 
 ## 조인 전략 (Join Strategy)
 
-![IRMS02](image/IRMS02.png)
+![IRMS02](files/image/irms/IRMS02.png)
 
 ### 장점
 
@@ -58,7 +58,7 @@
 
 ## 단일 테이블 전략 (Single-Table Strategy)
 
-![IRMS03](image/IRMS03.png)
+![IRMS03](files/image/irms/IRMS03.png)
 
 ### 장점
 
@@ -73,7 +73,7 @@
 
 ## 구현 클래스마다 테이블 전략 (Table-Per-Class Strategy)
 
-![IRMS04](image/IRMS04.png)
+![IRMS04](files/image/irms/IRMS04.png)
 > 데이터베이스 설계자와 ORM 전문가 둘 다 추천하지 않는 전략
 
 ### 장점
@@ -247,7 +247,7 @@ alter table if exists movie
 
 **생성된 테이블**
 
-![IRMS05.png](image/IRMS05.png)
+![IRMS05.png](files/image/irms/IRMS05.png)
 
 ### 단일 테이블 전략
 
@@ -292,5 +292,5 @@ create table item
 
 **생성된 테이블**
 
-![IRMS06.png](image/IRMS06.png)
+![IRMS06.png](files/image/irms/IRMS06.png)
 
