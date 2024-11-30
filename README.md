@@ -3,7 +3,7 @@
 ## JAVA
 
 * [문자 인코딩](java/CharsetEncoding.md)
-* [IO (Input / Output)](java/IO.md)
+* [IO (Input / Output)](java/IO_BASIC01)
 
 ## JPA
 
