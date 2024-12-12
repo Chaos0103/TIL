@@ -9,6 +9,15 @@
 * [자원 정리](java/OrganizingResources.md)
 * [네트워크 예외](java/NetworkException.md)
 
+## Design Pattern
+
+* [커맨드 패턴](designpattern/CommandPattern.md)
+* [널 오브젝트 패턴](designpattern/NullObjectPattern.md)
+
+## Backend
+
+* [mock() vs @Mock vs @MockBean](backend/Mock.md)
+
 ## JPA
 
 * [상속관계 매핑 전략](jpa/InheritanceRelationshipMappingStrategy.md)
