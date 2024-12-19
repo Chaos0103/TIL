@@ -21,6 +21,7 @@
 * [mock() vs @Mock vs @MockBean](backend/Mock.md)
 * [@WithMockUser vs @WithAnonymousUser vs @WithUserDetails](backend/SecurityTestUserAnnotation.md)
 * [스프링 트랜잭션](backend/SpringTransaction.md)
+* [스프링 트랜잭션 전파](backend/SpringTransactionPropagation.md)
 
 ## JPA
 
