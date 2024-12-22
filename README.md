@@ -26,3 +26,4 @@
 ## JPA
 
 * [상속관계 매핑 전략](jpa/InheritanceRelationshipMappingStrategy.md)
+* [JPA 기본 키 생성 전략](jpa/GeneratedValue.md)
